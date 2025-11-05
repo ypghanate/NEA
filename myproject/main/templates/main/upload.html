@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Django Page</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>Sheet Music Generator</h1>
+    <p>Automatically generates sheet music for songs you want to learn</p>
+</div>
+
+<form id="upload-view" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Generate Sheet Music</button>
+</form>
+
+<div id="loading" style="display:none; margin-top:10px; color:blue; font-weight:bold;">
+    <div class="spinner"> </div>
+    <p>Loading... please wait</p>
+</div>
+
+<div id="output"></div>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

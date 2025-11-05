@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sheet Music Result</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>Sheet Music Generated!</h1>
+
+    <div style="margin: 1.5rem 0;">
+        <h3>Original Audio</h3>
+        {% if music_request.audio_file %}
+        <audio controls>
+            <source src="{{ music_request.audio_file.url }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <p>{{ music_request.audio_file.name }}</p>
+        {% else %}
+        <p>No audio file available.</p>
+        {% endif %}
+    </div>
+
+    <div style="margin: 1.5rem 0;">
+        <h3>MIDI File</h3>
+        {% if music_request.midi_file %}
+        <p>
+            <a href="{{ music_request.midi_file.url }}" download>{{ music_request.midi_file.name }}</a>
+        </p>
+        {% else %}
+        <p>MIDI file not available.</p>
+        {% endif %}
+    </div>
+
+    <div style="margin: 1.5rem 0;">
+        <h3>Sheet Music</h3>
+        {% if music_request.sheet_music %}
+        <p>
+            <a href="{{ music_request.sheet_music.url }}" target="_blank" download>Download Sheet Music</a>
+        </p>
+        <iframe src="{{ music_request.sheet_music.url }}" width="100%" height="500px" style="border:1px solid #ccc;"></iframe>
+        {% else %}
+        <p>Sheet music not available.</p>
+        {% endif %}
+    </div>
+
+    <a href="{% url 'upload' %}">
+        <button style="margin-top: 1.5rem;">Upload Another Audio</button>
+    </a>
+</div>
+</body>
+</html>
