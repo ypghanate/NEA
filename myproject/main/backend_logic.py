@@ -9,7 +9,6 @@ from basic_pitch import ICASSP_2022_MODEL_PATH
 from .model import SeqSimplifier
 from .utils import midi_to_pianoroll, pianoroll_to_midi, add_difficulty_channel, overallComplexity
 
-warnings.filterwarnings('ignore', message='tensorflow is not installed')
 warnings.filterwarnings('ignore', category=UserWarning, module='resampy')
 os.environ["BASIC_PITCH_BACKEND"] = "CoreML"
 
@@ -19,7 +18,6 @@ def audio_to_midi(audio_path, output_midi_path):
 
     os.makedirs(os.path.dirname(output_midi_path), exist_ok=True)
 
-    # Save MIDI in the directory
     predict_and_save(
         [audio_path],
         os.path.dirname(output_midi_path),
