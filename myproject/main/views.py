@@ -29,7 +29,7 @@ def upload_view(request):
             audio_to_midi(audio_path, midi_path)
 
             # Convert MIDI to Sheet Music
-            result = convert_audio_sheet(midi_path, user_skill)
+            result = convert_audio_sheet(midi_path, user_skill, model_path="myproject/improved_model.pth)
 
             # Save paths in model
             music_request.midi_file.name = os.path.relpath(result["midi"], settings.MEDIA_ROOT)
