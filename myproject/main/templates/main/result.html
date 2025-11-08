@@ -10,6 +10,7 @@
 <div class="container">
     <h1>Sheet Music Generated!</h1>
 
+    <!-- Original Audio -->
     <div style="margin: 1.5rem 0;">
         <h3>Original Audio</h3>
         {% if music_request.audio_file %}
@@ -23,6 +24,7 @@
         {% endif %}
     </div>
 
+    <!-- MIDI Download -->
     <div style="margin: 1.5rem 0;">
         <h3>MIDI File</h3>
         {% if music_request.midi_file %}
@@ -34,13 +36,30 @@
         {% endif %}
     </div>
 
+    <!-- Sheet Music -->
     <div style="margin: 1.5rem 0;">
         <h3>Sheet Music</h3>
         {% if music_request.sheet_music %}
         <p>
             <a href="{{ music_request.sheet_music.url }}" target="_blank" download>Download Sheet Music</a>
         </p>
-        <iframe src="{{ music_request.sheet_music.url }}" width="100%" height="500px" style="border:1px solid #ccc;"></iframe>
+
+        <!-- Container for rendered sheet music -->
+        <div id="sheet-container" style="border:1px solid #ccc; width:100%; overflow-x:auto;"></div>
+
+        <!-- Load OSMD library -->
+        <script src="https://cdn.jsdelivr.net/npm/opensheetmusicdisplay@1.2.0/build/opensheetmusicdisplay.min.js"></script>
+        <script>
+            const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("sheet-container");
+
+            // Load MusicXML via URL (must be accessible via MEDIA_URL)
+            osmd.load("{{ music_request.sheet_music.url }}").then(() => {
+                osmd.render();  // Render the sheet music
+            }).catch(err => {
+                console.error("Failed to load MusicXML:", err);
+            });
+        </script>
+
         {% else %}
         <p>Sheet music not available.</p>
         {% endif %}
