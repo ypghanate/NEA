@@ -59,7 +59,7 @@ def convert_audio_sheet(midi_path, user_skill):
         target = sheet_diff
 
     roll_input = add_difficulty_channel(roll, target)
-    roll_tensor = torch.tensor(roll_input[None, :, :]).float()  # batch dimension
+    roll_tensor = torch.tensor(roll_input[None, :, :]).float() 
 
     with torch.no_grad():
         output_roll = simplifier_model(roll_tensor).squeeze(0).numpy()
