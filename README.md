@@ -16,7 +16,7 @@ This downloads the NEA project folder to your computer.
 
 ## Step 2: Set Up the Python Environment
 
-To keep things organized and avoid conflicts, it's best to create a _virtual environment_:
+To keep things organized and avoid conflicts, it's best to create a virtual environment:
 
 1. Change directory to the project folder:
    ```
