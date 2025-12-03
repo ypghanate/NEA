@@ -1,0 +1,19 @@
+Requirements
+
+* django
+* torch
+* torch.nn
+* torch.utils.data
+* numpy
+* pretty_midi
+* music21
+* basic_pitch
+* scipy
+* mido
+* librosa
+* notebook
+* google.colab (for notebook/Colab usage only)
+* warnings
+* os
+* sys
+* shutil
