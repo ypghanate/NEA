@@ -1,6 +1,5 @@
-// Grab elements from DOM
-const form = document.getElementById("upload-view"); // your HTML form id
-const loading = document.getElementById("loading");  // corrected variable name
+const form = document.getElementById("upload-view");
+const loading = document.getElementById("loading"); 
 const output = document.getElementById("output");
 
 form.addEventListener("submit", async (event) => {
