@@ -1,3 +1,48 @@
+# Sheet Music Generator (NEA Project)
+
+An end-to-end web application that automatically transcribes audio files into piano sheet music. Powered by a Deep Learning model trained on classical performance datasets, this platform converts raw audio recordings into structured musical scores.
+
+## Overview
+
+Transcribing audio to sheet music manually is a complex and time-consuming process. This project automates Automatic Music Transcription (AMT) by processing input audio through a Long Short-Term Memory (LSTM) network to predict pitch and timing data, outputting formatted piano sheet music.
+
+### Key Features
+* **Audio-to-Score Transcription:** Upload audio files (e.g., `.wav`, `.mp3`) and generate downloadable piano sheet music.
+* **Deep Learning Engine:** Uses an LSTM neural network trained on the MAESTRO dataset to detect complex temporal relationships between audio signals and musical notes.
+* **Web Interface:** Interactive frontend built with Django Templates to upload files, view transcription progress, and inspect generated scores.
+* **MIDI & Score Processing:** Integrates `pretty_midi` and `music21` to process symbolic audio data and format readable sheet music.
+
+---
+
+## Tech Stack
+
+| Domain | Technologies |
+| :--- | :--- |
+| **Backend** | Python, Django |
+| **Frontend** | Django Templates, HTML5, CSS3, JavaScript |
+| **Machine Learning** | PyTorch, Jupyter Notebook, Google Colab |
+| **Audio & Music Processing** | `pretty_midi`, `music21` |
+| **Dataset** | MAESTRO (MIDI and Audio Edited for Synchronous Tracks and Organization) |
+
+---
+
+## Architecture & Workflow
+
+```text
+[ Audio File (.wav/.mp3) ]
+          │
+          ▼
+[ Audio Preprocessing ] ──► (Feature Extraction)
+          │
+          ▼
+[ PyTorch LSTM Model ]  ──► (Predicts Pitches & Timings)
+          │
+          ▼
+[ MIDI & Score Engine ] ──► (pretty_midi & music21)
+          │
+          ▼
+[ Rendered Sheet Music / Django Frontend Output ]
+
 To run the project you should:
 
 ## Step 1: Clone the Repository
