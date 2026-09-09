@@ -43,6 +43,9 @@ Transcribing audio to sheet music manually is a complex and time-consuming proce
           ▼
 [ Rendered Sheet Music / Django Frontend Output ]
 
+
+------------------------------------------------------
+
 To run the project you should:
 
 ## Step 1: Clone the Repository
